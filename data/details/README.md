@@ -65,6 +65,10 @@
   testing the safety performance of electrical products. Please
   [contact us](https://www.fs.com/contact_us.html) to learn more.
 
+- ETL: This product fully accords with the ETL to indicate conformity with relevant industry
+  standards for any electrical or mechanical product. Please
+  [contact us](https://www.fs.com/contact_us.html) to learn more.
+
 - RCM: This product is RCM compliant, which indicates compliance with electrical safety, EMC,
   EME and telecommunications legislative requirements. Please
   [contact us](https://www.fs.com/contact_us.html) to learn more.
