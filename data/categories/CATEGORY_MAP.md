@@ -30,8 +30,8 @@
 | │ ├ Modular DC / NPB / NVIDIA / UFM / Accessories | /c/modular-data-center-switches-4225 等 | - | ⬜ | 产品已含在主干26个内,镜像阶段再抓子页 |
 | ├ Enterprise Switches | /c/enterprise-switches-3079 | 105 | 🔄 | 第1/11页已抓,剩2-11页 |
 | ├ PicOS® Data Center Switches | /c/picos-data-center-switches-5125 | 43 | 🔄 | 第1/5页已抓,剩2-5页 |
-| ├ Industrial Ethernet Switches | /c/industrial-ethernet-switches-4073 | 51 | 🔄 | 第1/6页已抓,剩2-6页 |
-| ├ SME Switches | /c/sme-switches-4235 | 45 | 🔄 | 第1/5页已抓,剩2-5页 |
+| ├ Industrial Ethernet Switches | /c/industrial-ethernet-switches-4073 | 51* | ✅ | 全部5页已抓;*官方计数含跨类重复配件,实际去重48个 |
+| ├ SME Switches | /c/sme-switches-4235 | 45 | ✅ | 全部5页已抓(第5页为空),45个全部入表 |
 | ├ PicOS® Enterprise Switches | /c/picos-enterprise-switches-4223 | ? | ⬜ | |
 | ├ PicOS® PoE+ Switches | /c/picos-poe-switches-5585 | ? | ⬜ | |
 | ├ PoE+ Switches | /c/poe-switches-3150 | ? | ⬜ | |
