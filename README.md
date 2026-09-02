@@ -36,9 +36,11 @@ SKU | 型号P/N | 一级分类 | 分类路径 | 商品标题 | 单价USD | 销�
 - ✅ **Switches 交换机 8 个官方分支全部翻页完成**,去重后共 **319 个 SKU 入表**
   - Data Center 26 ✅ / Enterprise 105(101收录)✅ / PicOS DC 43 ✅ / PicOS Enterprise 64 ✅ / Industrial 48 ✅ / SME 45 ✅ / PicOS PoE 25 ✅ / PoE+ 48 ✅
   - 各分支含跨分类的软件/授权/维保/电源/配件条目(如 PicOS License、NSG 防火墙订阅、PoE Injector),均一并收录
-- 📊 Excel/CSV: `data/excel/FS.com_catalog_US.xlsx`(319 行,按SKU去重)
+- 📊 Excel/CSV: `data/excel/FS.com_catalog_US.xlsx`(319 行,按SKU去重,含"类别"列与"仅交换机-整机线卡"sheet)
 - 原始数据: `data/products/catalog_001~015.jsonl`(批次追加,永不覆盖)
-- ⬜ 待续(回复"继续"): Networking 等其他一级大类(光模块/光纤/机柜/铜缆/工具/网通…) → 交换机等已收录商品的详情页镜像(MD/规格全表) → 博客/方案/词条/案例文字板块 → 图片批量归档
+- 🔍 交换机类目复查(2026-09-02):8 分支含全部 PicOS 子类(NPB/5616、NVIDIA/5575、HPC-AI/5405、Modular/4225 等)逐页翻完对账,**无 SKU 遗漏**(5616 上 5 台 NPB 整机已由父类 5125 收录于 catalog_010)
+- 🗂️ 详情页整页镜像(进行中): `data/details/<sku>.md` — 交换机整机/线卡 215 SKU,逐页全部抓取片段拼接(全文+图片链接+规格+认证+下载)。配件/授权/维保类**不**镜像(用户指令)
+- ⬜ 待续(回复"继续"): 详情镜像剩余页 → Networking 等其他一级大类(光模块/光纤/机柜/铜缆/工具/网通…) → 博客/方案/词条/案例文字板块 → 图片批量归档
 
 ## 站点结构备忘(供后续轮次使用)
 
