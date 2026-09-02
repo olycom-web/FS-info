@@ -12,10 +12,30 @@ OUT_XLSX = os.path.join(ROOT, "data", "excel", "FS.com_catalog_US.xlsx")
 OUT_CSV = os.path.join(ROOT, "data", "excel", "FS.com_catalog_US.csv")
 
 HEADERS = [
-    "SKU", "型号P/N", "一级分类", "分类路径", "商品标题", "单价USD",
+    "SKU", "型号P/N", "类别", "一级分类", "分类路径", "商品标题", "单价USD",
     "销量原文", "销量(数值)", "评论数", "标签(热门/新品)", "库存状态",
     "可选配置", "特性标签", "主图URL", "商品页URL", "抓取日期", "来源分类页",
 ]
+
+KIND_SWITCH = "交换机整机/线卡"
+KIND_ACC    = "配件/电源/线缆工具"
+KIND_LIC    = "软件/授权/维保/服务"
+KIND_RFW    = "路由器/防火墙/网关"
+
+def classify(r):
+    t = ((r.get("title") or "") + " " + (r.get("pn") or "")).lower()
+    if any(k in t for k in ["firewall", "security gateway", "wireless gateway"]):
+        return KIND_RFW
+    if any(k in t for k in ["license", "perpetual", "bundle", "subscription",
+                            "maintenance", "support", "services", "software",
+                            "platform", "ampcon"]):
+        return KIND_LIC
+    if any(k in t for k in ["power module", "fan module", "power supply",
+                            "injector", "splitter", "extender", "coupler",
+                            "keystone", "power cord", "console cable",
+                            "patch cable", "adapter"]):
+        return KIND_ACC
+    return KIND_SWITCH
 
 def sold_to_num(raw):
     if not raw:
@@ -72,9 +92,14 @@ def main():
         c.fill = PatternFill("solid", fgColor="C0392B")
         c.alignment = Alignment(vertical="center")
     n_cat = {}
+    rows_sw = []
+    width = [10, 26, 22, 40, 60, 11, 11, 11, 8, 12, 10, 18, 60, 60, 42, 12, 52]
     for r in rows:
+        r["_kind"] = classify(r)
+        if r["_kind"] == KIND_SWITCH:
+            rows_sw.append(r)
         ws.append([
-            r.get("sku"), r.get("pn"), cat_of(r), r.get("cat"), r.get("title"),
+            r.get("sku"), r.get("pn"), r["_kind"], cat_of(r), r.get("cat"), r.get("title"),
             r.get("price"), r.get("sold_raw"),
             sold_to_num(r.get("sold_raw")) if r.get("sold_num") is None else r.get("sold_num"),
             r.get("reviews"), r.get("flag", ""), r.get("stock", ""),
@@ -82,30 +107,68 @@ def main():
             r.get("img"), r.get("url"), r.get("ts"), r.get("cat_url"),
         ])
         n_cat[cat_of(r)] = n_cat.get(cat_of(r), 0) + 1
-    # sheet2: stats per category
+    # sheet2: switches only
+    ws_sw = wb.create_sheet("仅交换机-整机线卡")
+    ws_sw.append(HEADERS)
+    for r in rows_sw:
+        ws_sw.append([
+            r.get("sku"), r.get("pn"), r["_kind"], cat_of(r), r.get("cat"), r.get("title"),
+            r.get("price"), r.get("sold_raw"),
+            sold_to_num(r.get("sold_raw")) if r.get("sold_num") is None else r.get("sold_num"),
+            r.get("reviews"), r.get("flag", ""), r.get("stock", ""),
+            r.get("options", ""), " | ".join(r.get("tags", [])),
+            r.get("img"), r.get("url"), r.get("ts"), r.get("cat_url"),
+        ])
+    for c in ws_sw[1]:
+        c.font = Font(bold=True, color="FFFFFF")
+        c.fill = PatternFill("solid", fgColor="2E86C1")
+    for i, w in enumerate(width, start=1):
+        ws_sw.column_dimensions[openpyxl.utils.get_column_letter(i)].width = w
+    # sheet3: stats per category
     ws2 = wb.create_sheet("按分类统计")
-    ws2.append(["一级分类", "商品数(SKU)"])
+    ws2.append(["类别", "商品数(SKU)"])
     for k, v in sorted(n_cat.items()):
         ws2.append([k, v])
+    kinds = {}
+    for r in rows:
+        kinds[r["_kind"]] = kinds.get(r["_kind"], 0) + 1
+    ws2.append([])
+    ws2.append(["按产品类别", ""])
+    for k, v in kinds.items():
+        ws2.append([k, v])
+    ws2.append([])
     ws2.append(["合计", len(rows)])
-    width = [10, 26, 22, 40, 60, 11, 11, 11, 8, 12, 10, 18, 60, 60, 42, 12, 52]
     for i, w in enumerate(width, start=1):
         ws.column_dimensions[openpyxl.utils.get_column_letter(i)].width = w
     wb.save(OUT_XLSX)
 
+    OUT_SW_CSV = os.path.join(ROOT, "data", "excel", "FS.com_switches_only.csv")
     with open(OUT_CSV, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
         w.writerow(HEADERS)
         for r in rows:
             w.writerow([
-                r.get("sku"), r.get("pn"), cat_of(r), r.get("cat"), r.get("title"),
+                r.get("sku"), r.get("pn"), r["_kind"], cat_of(r), r.get("cat"), r.get("title"),
                 r.get("price"), r.get("sold_raw"),
                 sold_to_num(r.get("sold_raw")) if r.get("sold_num") is None else r.get("sold_num"),
                 r.get("reviews"), r.get("flag", ""), r.get("stock", ""),
                 r.get("options", ""), " | ".join(r.get("tags", [])),
                 r.get("img"), r.get("url"), r.get("ts"), r.get("cat_url"),
             ])
-    print(f"rows={len(rows)}  xlsx={OUT_XLSX}  csv={OUT_CSV}")
+    with open(OUT_SW_CSV, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.writer(f)
+        w.writerow(HEADERS)
+        for r in rows_sw:
+            w.writerow([
+                r.get("sku"), r.get("pn"), r["_kind"], cat_of(r), r.get("cat"), r.get("title"),
+                r.get("price"), r.get("sold_raw"),
+                sold_to_num(r.get("sold_raw")) if r.get("sold_num") is None else r.get("sold_num"),
+                r.get("reviews"), r.get("flag", ""), r.get("stock", ""),
+                r.get("options", ""), " | ".join(r.get("tags", [])),
+                r.get("img"), r.get("url"), r.get("ts"), r.get("cat_url"),
+            ])
+    print(f"switches-only rows={len(rows_sw)} -> {OUT_SW_CSV}")
+    print(f"rows={len(rows)}  xlsx={OUT_XLSX}  csv={OUT_CSV}  switches_only={len(rows_sw)}")
     for k, v in sorted(n_cat.items()):
         print(f"  {k}: {v}")
 
