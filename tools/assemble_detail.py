@@ -5,7 +5,7 @@ Reads chunk parts data/details/.parts/<sku>.c<N>.md (fetched via platform channe
 prepends a metadata header from the deduped catalog rows, and removes the parts.
 Run:  python3 tools/assemble_detail.py <sku>
 """
-import glob, json, os, re, sys
+import datetime, glob, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROD_DIR = os.path.join(ROOT, "data", "products")
@@ -43,7 +43,7 @@ def main():
     head.append(f"- 销量: {r.get('sold_raw') or ''}  评论: {r.get('reviews') or ''}")
     head.append(f"- 主图: {r.get('img') or ''}")
     head.append(f"- 目录抓取日期: {r.get('ts') or ''}")
-    head.append(f"- 整页镜像日期: 2026-09-02")
+    head.append(f"- 整页镜像日期: {datetime.date.today().isoformat()}")
     head.append("")
     body = []
     for i, p in enumerate(parts):
