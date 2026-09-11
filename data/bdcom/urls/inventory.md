@@ -1,47 +1,45 @@
 # BDCOM 全站 URL 台账(inventory)
 
 > 来源:站内搜索字母扫描 + 分类页 + sitemap。只增不删;状态:⬜未抓 ✅已抓。
-> 计数口径:按 URL 前缀分类(products / news / case / solution-detail / 静态)。
+> 计数口径:按 URL 前缀分类(products / news / case / solution-detail / faq / 静态)。
 
-## 统计(实时更新)
+## 统计(实时更新,2026-09-11)
 
 | 类型 | 已发现 | 已抓取 |
 |---|---|---|
-| products | (扫描中) | 0 |
-| news | (扫描中) | 0 |
-| case | (扫描中) | 0 |
-| solution-detail | (扫描中) | 0 |
+| products | 82 | 0 |
+| case | 76 | 0 |
+| news | 10 | 0 |
+| solution-detail | 10 | 0 |
+| faq | 2 | 0 |
 | 静态/其他 | 11 | 11 |
 
-## 静态页(✅ 已抓/已确认)
+> 注:字母扫描未完成(剩余 a/b/c/d/f/g/h/i/l/m/n/o/p/r/s/e/t/u/v/w/y),计数将持续增长。
 
-- https://bdcomnetworks.com/
-- https://bdcomnetworks.com/about-us.html
-- https://bdcomnetworks.com/news.html
-- https://bdcomnetworks.com/case.html
-- https://bdcomnetworks.com/warranty-policy.html
-- https://bdcomnetworks.com/career.html
-- https://bdcomnetworks.com/sitemap.xml
-- https://bdcomnetworks.com/robots.txt
-- https://bdcomnetworks.com/c/81 … /c/86(6 分类)
-- https://bdcomnetworks.com/weekly1(⬜ 待抓)
+## 静态页(✅ 已确认/已抓)
 
-## 产品页 /products/<id>.html(⬜ 全部待镜像)
+- https://bdcomnetworks.com/ · /about-us.html · /news.html · /case.html · /warranty-policy.html · /career.html · /sitemap.xml · /robots.txt · /c/81…/c/86 · /weekly1(⬜待抓)
 
-<扫描中,去重后追加>
+## 产品页 /products/<id>.html(⬜ 全部待镜像,共 82 个已发现)
 
-## 新闻 /news/<id>.html(⬜)
+486 487 488 489 490 491 492 494 495 496 497 500 501 502 503 504 505 506 507 508 509 510 511 512 514 518 519 520 521 522 523 524 525 526 527 528 529 530 531 532 533 534 535 536 537 544 545 548 551 553 554 555 556 557 558 562 563 564 565 566 567 568 569 570 571 572 573 574 575 576 577 578 579 580 581 582 583 586 587 588 589 590
 
-<扫描中>
+## 案例 /case/<id>.html(⬜,76 个已发现)
 
-## 案例 /case/<id>.html(⬜)
+85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 101 102 105 106 107 109 111 112 113 114 115 116 118 119 120 122 123 125 126 127 128 129 133 134 136 137 139 140 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 161 162 163 164 165 167 168 597
 
-<扫描中>
+## 新闻 /news/<id>.html(⬜,10 个已发现)
 
-## 方案 /solution-detail/<id>.html(⬜)
+214 215 216 217 218 219 221 222 223
 
-<扫描中>
+## 方案 /solution-detail/<id>.html(⬜,10 个已发现)
+
+202 203 205 206 207 208 210 211 213
+
+## FAQ /faq/<id>.html(⬜,2 个已发现)
+
+183 184
 
 ## 扫描日志
 
-- 2026-09-11 sweep keyword=switch page1-2(7 页待续)、keyword=s page1/23、keyword=e page1
+- 2026-09-11:q✅ x✅ z✅ j✅ k✅;v(1-2/8) u(1-2/19) s(1/23,23/23) e(1/24) switch(1-2/7) 进行中
