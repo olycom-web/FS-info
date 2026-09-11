@@ -237,6 +237,8 @@ tools/build_excel.py        ← 合并 jsonl → 去重 → 生成 xlsx/csv
 - **决策**：每批开工前必须重算差集取下一对 SKU（`comm -23`），禁止按 csv 行号顺延  
   **原因**：batch69 教训——按上批行号顺延取号导致与 batch23（`0e9647b`）完全重复镜像同一对 SKU（201295+192848）。已踩坑：详见"当前已知问题"。
 
+- **数据核对口径（台账对账）**：git 历史中 mirror commits 共 108 个（batch1–107，其中 batch61 有 amend 二次提交），累计新建 `data/details/*.md` 路径 221 次 = **215 唯一 SKU 成品** + `data/details/README.md` 3 次更新（batch3 建约定 / batch8 补 ETL / batch72 补 Anatel）+ batch69 与 batch23 重复镜像 2 次 + batch61 amend 重写 329357 1 次。因此完整性判定一律以**文件系统 215 个 `<sku>.md` + 差集校验**为准，不以 git 新建路径次数为准。
+
 - **已踩过的坑**：GitHub 凭据失效（batch90–102 期间）——push 报 `could not read Username`，13 个 commits（d61f2fd…744d387）本地堆积；batch103 推送时凭据已恢复，`44a22db..ae8e778` 一次性补推 14 commits  
   **解决方案**：凭据失效时停止 push、不重复 commit，恢复后统一推送；每轮开工先 `git status` + `git fetch` 确认本地/远端。
 
