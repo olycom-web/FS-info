@@ -27,6 +27,11 @@
   the industry. Go to the [Compliance Center](https://www.fs.com/compliance-center-h0007.html)
   for specific certifications.
 
+- Anatel: This product is fully compliant with Anatel, has been certified by the Brazilian
+  National Telecommunications Agency (Anatel), and complies with relevant technical standards
+  and regulations. Please [contact us](https://www.fs.com/company/quality_control.html) to
+  learn more.
+
 - REACH: REACH is a European Union regulation concerning the Registration, Evaluation,
   Authorization and Restriction of Chemicals. It came into force on 1st June 2007 and replaced
   a number of European Directives and Regulations with a single system. The regulation aims to
