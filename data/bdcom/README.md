@@ -61,14 +61,21 @@ data/bdcom/
 - sitemap.xml 仅列 9 个顶级页,不含商品/案例/新闻,枚举价值低。
 - 图片/资源域:`resource.fs.com`(`/boda/` 与 `/mall/`)及 `front-resource.fs.com`——收购后已并入 FS 基础设施。
 
-## 进度
+## 进度(2026-09-11 全站内容镜像收官)
 
 - [x] 站点结构探测(分类 81–86、URL 模式、枚举通道)
-- [ ] 全站 URL 枚举(字母扫描进行中,见 urls/inventory.md)
-- [ ] 产品页整页镜像(待枚举后开批)
-- [ ] 新闻/案例/方案/静态页镜像
-- [ ] 下载资源(URL 清单 + 可解析 PDF 文本)
-- [ ] Excel/CSV 汇总表
+- [x] 全站 URL 枚举(字母扫描 + ID 段探测,见 urls/inventory.md)
+- [x] 产品页整页镜像:482–590 共 **109 页**(details/<id>.md;477–481、591–600 为 404)
+- [x] 客户案例镜像:**85 内容页**(85–168 + 597)+ 169–188 兜底空页占位 20 页(cases/<id>.md)
+- [x] 新闻镜像:214–224 共 **11 页**(news/<id>.md;200–213、225+ 404)
+- [x] 方案镜像:202–213 共 **12 页**(solutions/<id>.md;含探测新增 204/209/212)
+- [x] FAQ:全部为 "No Data" 占位模板(6 个 ID 落盘标注)
+- [x] 静态页+分类页:16 页(site/*.md;weekly1 404)
+- [x] Excel 汇总:data/bdcom/excel/bdcom_mirror_summary.xlsx(总览+6 板块 sheet)
+- [~] 下载资源:**受限如实记录** —— 产品页 Download 标签区为 JS 渲染,网页转写通道不可见;站内搜索 "datasheet" 无结果、无公开下载枚举入口,故 PDF 文本与固件 URL 本轮无法获取。若后续获得直接 URL,可补抓 PDF 文本存 downloads/。
+
+> 全站内容页合计 **233 页全部镜像**(109 产品 + 85 案例 + 11 新闻 + 12 方案 + 16 静态/分类);
+> 另 20 个 case 兜底空页与 6 个 faq No Data 页已占位标注。台账与逐批提交链见 git log 与 urls/inventory.md。
 
 ## Certifications(产品/公司页出现的认证,全文统一收录,2026-09-11 起)
 

@@ -43,6 +43,22 @@ SKU | 型号P/N | 一级分类 | 分类路径 | 商品标题 | 单价USD | 销�
 - ✅ 详情页整页镜像(2026-09-11 完成): `data/details/<sku>.md` — 交换机整机/线卡 **215 SKU 全部镜像完毕(215/215)**,最终批 batch107(commit `04c1d9b`),已全部推送,工作区干净。镜像压缩约定与认证全文见 `data/details/README.md`。配件/授权/维保类**不**镜像(用户指令)
 - ⬜ 待续(回复"继续",方向需用户确认): Networking 等其他一级大类(光模块/光纤/机柜/铜缆/工具/网通…) → 博客/方案/词条/案例文字板块 → 图片批量归档
 
+## BDCOM 全站镜像(2026-09-11 完成,数据在 data/bdcom/)
+
+> 用户指令:BDCOM(bdcomnetworks.com,已被 FS 收购)按与 FS.com 相同规格归档,"甚至更多更深",一起写进本仓库。
+> robots.txt 声明 Disallow 全部爬虫;用户确认(2026-09-11)继续抓取,声明与决策永久记录于 `data/bdcom/README.md`。
+
+- ✅ **全站内容页 233 页全部镜像完毕**,每批落盘即 commit+push(约 50 个批次,HEAD `4bbaa63` 为最新)
+  - 产品系列页 109 页(`data/bdcom/details/`,ID 482–590 全覆盖;477–481、591–600 为 404)
+  - 客户案例 85 内容页(`data/bdcom/cases/`,85–168+597;169–188 为兜底空页,已占位标注 20 页)
+  - 新闻 11 页(`data/bdcom/news/`,214–224)
+  - 解决方案 12 页(`data/bdcom/solutions/`,202–213)
+  - 静态页+分类页 16 页(`data/bdcom/site/`,含 c/81–c/86 六分类)
+  - FAQ 全部为 "No Data" 占位模板(6 个 ID 落盘标注)
+- 📊 Excel 汇总:`data/bdcom/excel/bdcom_mirror_summary.xlsx`(总览 + 6 板块 sheet)
+- 📋 台账:`data/bdcom/urls/inventory.md`(计数口径与死链清单)、`sweeps_20260911_a.txt`(字母扫描与 ID 探测原始记录)
+- ⚠️ 受限项(已如实记录):产品页 Download 标签区为 JS 渲染,转写通道不可见,PDF 文本与固件 URL 本轮无法获取;其他语言站(中/法/西/俄)按用户确认本轮不抓。
+
 ## 站点结构备忘(供后续轮次使用)
 
 - 分类页: `https://www.fs.com/c/<slug>-<id>[?page=N]`,父分类聚合子类商品,约10-12个/页
