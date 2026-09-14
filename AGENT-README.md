@@ -12,8 +12,8 @@
 | 仓库路径 | `/home/user/FS-info`（远端：github.com/olycom-web/FS-info） |
 | 当前主分支 | main（仅含 Initial commit `71020ee`） |
 | 工作分支 | `arena/01a060a9-fs-info`（本会话唯一工作分支，全部产出在此） |
-| 最后更新时间 | 2026-09-11 09:45 |
-| 最后更新由 | 对话 3：全量详情镜像收尾（215/215）+ Agent 框架文件入库 |
+| 最后更新时间 | 2026-09-11(BDCOM 全站镜像收官) |
+| 最后更新由 | BDCOM 全站镜像 233 页 + Excel + 台账收尾 |
 
 ---
 
@@ -55,8 +55,8 @@
 
 ```
 main                      ← 仅 Initial commit 71020ee（原始空仓库）
-└── arena/01a060a9-fs-info  ← 当前工作分支，全部 115 个提交都在此分支
-                              HEAD=04c1d9b（batch107），已推送 origin，本地=远端
+└── arena/01a060a9-fs-info  ← 当前工作分支，全部提交都在此分支
+                              HEAD=9890538（BDCOM 收官文档），已推送 origin，本地=远端
 ```
 
 **关键 Commit 记录**（里程碑）
