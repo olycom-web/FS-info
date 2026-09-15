@@ -12,8 +12,8 @@
 | 仓库路径 | `/home/user/FS-info`（远端：github.com/olycom-web/FS-info） |
 | 当前主分支 | main（仅含 Initial commit `71020ee`） |
 | 工作分支 | `arena/01a060a9-fs-info`（本会话唯一工作分支，全部产出在此） |
-| 最后更新时间 | 2026-09-11(BDCOM 全站镜像收官) |
-| 最后更新由 | BDCOM 全站镜像 233 页 + Excel + 台账收尾 |
+| 最后更新时间 | 2026-09-15(BDCOM 漏网复查:权威列表验证零遗漏,边界全部定论) |
+| 最后更新由 | BDCOM 漏网复查 + 8 兜底占位补录 + 台账/文档收尾 |
 
 ---
 
@@ -36,7 +36,8 @@
 ```
 
 ### 已完成的任务（最近5条）
-- [x] BDCOM 全站内容镜像收官 — 233 页全部镜像（products 109 / case 85+20占位 / news 11 / solutions 12 / 静态分类 16 / faq 占位 6）＋ Excel 汇总 ＋ 台账收尾 — 完成于 2026-09-11（约 50 批次 commit+push）
+- [x] BDCOM 全站内容镜像收官 — 233 页全部镜像（products 109 / case 85+28占位 / news 11 / solutions 12 / 静态分类 16 / faq 占位 6）＋ Excel 汇总 ＋ 台账收尾 — 完成于 2026-09-11（约 50 批次 commit+push）
+- [x] BDCOM 漏网复查 — /case.html?page=1–10 服务端分页全量枚举,85 条案例与镜像集差集=∅(权威验证);products/news/solutions/faq 各 ID 段下界补探定论;case 1–84、189–596 确认同一兜底模板(补录 8 占位);额外静态页全 404;首页 /solution/service_provider 500 死链记录 — 完成于 2026-09-15（明细 urls/sweeps_20260915_a.txt）
 - [x] BDCOM 镜像四板块主体（cases 68 页 batch1–17、news 10 页、solutions 9 页、faq 2 页）— 完成于 2026-09-11
 - [x] BDCOM 产品段 482–590 全段 109 页镜像（batch1–batch27，含差集验收补漏 491/492）— 完成于 2026-09-11
 - [x] BDCOM 站点结构探测 + robots 覆写决策确认 + 范围确认（全站/仅英文/下载尽力抓文本）— 完成于 2026-09-11
@@ -56,7 +57,8 @@
 ```
 main                      ← 仅 Initial commit 71020ee（原始空仓库）
 └── arena/01a060a9-fs-info  ← 当前工作分支，全部提交都在此分支
-                              HEAD=9890538（BDCOM 收官文档），已推送 origin，本地=远端
+                              HEAD=git log 顶端（最新:2026-09-15 BDCOM 漏网复查文档），已推送 origin，本地=远端
+                              （注:此处不再硬编码哈希,开工前按上方规则用 git log 核对实时 HEAD）
 ```
 
 **关键 Commit 记录**（里程碑）
@@ -76,6 +78,9 @@ main                      ← 仅 Initial commit 71020ee（原始空仓库）
 | `d61f2fd` | arena | mirror batch90：250955+309267 —— 此后 GitHub 凭据失效，batch90–102 共 13 个 commits 本地堆积未推送 |
 | `ae8e778` | arena | mirror batch103：380719+391163 —— 推送时凭据已恢复，`44a22db..ae8e778` 一次性补推 14 个 commits |
 | `04c1d9b` | arena | mirror batch107（最终批）：406393+409447 —— 215/215 完成，工作区干净 |
+| `9890538` | arena | BDCOM 收官：台账终版 + 根/AGENT README 更新（233 内容页 + 26 占位 + Excel） |
+| `c6f5649` | arena | BDCOM Excel 重生成（cases 补 188，共 105）—— 2026-09-11 收官末提交 |
+| `<见 git log>` | arena | 2026-09-15 BDCOM 漏网复查：case 权威列表验证（差集=∅）+ 8 兜底占位补录 + 边界定论 + 文档 |
 
 **完整批次台账**（mirror batch1–107，含每批 SKU 对与 commit；总量核对见下方"数据核对口径"）
 

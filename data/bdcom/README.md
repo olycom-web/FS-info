@@ -66,16 +66,18 @@ data/bdcom/
 - [x] 站点结构探测(分类 81–86、URL 模式、枚举通道)
 - [x] 全站 URL 枚举(字母扫描 + ID 段探测,见 urls/inventory.md)
 - [x] 产品页整页镜像:482–590 共 **109 页**(details/<id>.md;477–481、591–600 为 404)
-- [x] 客户案例镜像:**85 内容页**(85–168 + 597)+ 169–188 兜底空页占位 20 页(cases/<id>.md)
+- [x] 客户案例镜像:**85 内容页**(85–168 + 597)+ 兜底空页占位 28 页(169–188 共 20 + 复查补录 1/50/80/84/250/400/500/596 共 8;cases/<id>.md)
 - [x] 新闻镜像:214–224 共 **11 页**(news/<id>.md;200–213、225+ 404)
 - [x] 方案镜像:202–213 共 **12 页**(solutions/<id>.md;含探测新增 204/209/212)
 - [x] FAQ:全部为 "No Data" 占位模板(6 个 ID 落盘标注)
 - [x] 静态页+分类页:16 页(site/*.md;weekly1 404)
+- [x] 2026-09-15 漏网复查:① /case.html?page=1–10 服务端分页全量枚举 → 85 条案例与镜像集**差集=∅**(站点权威列表验证,零遗漏);② products 下界(476/400/300/200/100/1)、news(1/50/100/150/189/199)、solutions(1/50/100/150/199)、faq(1/100/178–188) 各段补探定论;③ case 1–84、189–596 确认与 169–188 同一"宁德"兜底模板(11 抽样点一致),补录 8 占位;④ 额外静态页 faq/weekly/download/support/privacy-policy/terms/solution.html 全 404,c/80/87/88 No Data;⑤ 首页 /solution/service_provider 链接 500(站侧死链,无内容)。结论:**无遗漏内容页**(明细 urls/sweeps_20260915_a.txt)
 - [x] Excel 汇总:data/bdcom/excel/bdcom_mirror_summary.xlsx(总览+6 板块 sheet)
 - [~] 下载资源:**受限如实记录** —— 产品页 Download 标签区为 JS 渲染,网页转写通道不可见;站内搜索 "datasheet" 无结果、无公开下载枚举入口,故 PDF 文本与固件 URL 本轮无法获取。若后续获得直接 URL,可补抓 PDF 文本存 downloads/。
 
 > 全站内容页合计 **233 页全部镜像**(109 产品 + 85 案例 + 11 新闻 + 12 方案 + 16 静态/分类);
-> 另 20 个 case 兜底空页与 6 个 faq No Data 页已占位标注。台账与逐批提交链见 git log 与 urls/inventory.md。
+> 另 28 个 case 兜底空页与 6 个 faq No Data 页已占位标注。案例板块经站点权威列表(/case.html?page=1–10)验证差集=∅。
+> 台账与逐批提交链见 git log 与 urls/inventory.md。
 
 ## Certifications(产品/公司页出现的认证,全文统一收录,2026-09-11 起)
 

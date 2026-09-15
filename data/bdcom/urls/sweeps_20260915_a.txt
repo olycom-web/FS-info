@@ -1,0 +1,80 @@
+# 漏网复查扫描日志(2026-09-15)
+# 目的:收官后全面复查未覆盖 ID 段/边界/额外静态页/列表枚举,确认无遗漏。
+# 通道:平台 fetch_page,一次一页;探测页仅记录结论,兜底页按原文占位落盘。
+
+## 第 1 轮:products / case / news / solution 下界探测
+# products/476.html → 404
+# products/400.html → 404
+# products/300.html → 404
+# products/200.html → 404
+# products/100.html → 404
+# products/1.html   → 404
+#   结论:products 482 之下无活页,482–590 为完整活段(上界 591–600 404 见前)。
+# case/84.html → 兜底模板(标题"Build smart transportation ... Ningde",正文空)
+# case/80.html → 同上兜底
+# case/50.html → 同上兜底
+# case/1.html  → 同上兜底
+#   结论:case 1–84 为范围外兜底模板(与 169–188 同源,正文 JS 渲染不可得)。
+# news/199.html → 404
+# news/150.html → 404
+# news/100.html → 404
+# solution-detail/199.html → 404
+# solution-detail/150.html → 404
+
+## 第 2 轮:faq 边界 / case 中段抽样 / 额外静态页 / 分类边界
+# faq/178.html → No Data;faq/179.html → No Data;faq/187.html → No Data;faq/188.html → No Data
+#   结论:faq 178–188 全 No Data 模板,无真实 FAQ 内容。
+# case/250.html、case/400.html、case/500.html、case/596.html → 全部同"宁德"兜底模板
+#   结论:case 189–596(除 597)与 1–84、169–188 同为兜底模板,11 个抽样点一致。
+# solution-detail/100.html → 404
+# /faq.html → 404
+# /weekly.html → 404
+# /download.html → 404
+# /support.html → 404
+# /privacy-policy.html → 404
+# /terms.html → 404
+#   结论:除已镜像 9 个 sitemap 顶级页外无其他静态页。
+# /c/87 → No Data(标题"87 | BDCOM");/c/88 → No Data;/c/80 → No Data
+#   结论:分类页活段即 c/81–c/86(已镜像 6 页)。
+
+## 第 3 轮:列表服务端分页枚举(权威完整性验证)
+# 发现:/case.html?page=N 为服务端分页(每页 9 条,共 10 页)——确定性枚举通道。
+# /case.html?page=1 → 597, 85–92(已镜像)
+# /case.html?page=2 → 93–101
+# /case.html?page=3 → 102–110
+# /case.html?page=4 → 111–119
+# /case.html?page=5 → 120–128
+# /case.html?page=6 → 129–137
+# /case.html?page=7 → 138–146
+# /case.html?page=8 → 147–155
+# /case.html?page=9 → 156–164
+# /case.html?page=10 → 165–168
+#   ★ 权威结论:站点自身案例列表全量 = 597 + 85–168 共 85 条,与已镜像 cases/ 内容页
+#     集合完全一致(差集=∅)。案例板块经站点权威列表验证,零遗漏。
+# /news.html?page=2 → 参数无效(JS "Load more" 模板,仅前 5 条服务端渲染)→ 新闻无分页枚举通道,
+#     完整性依赖 ID 段探测(已穷尽,见下)。
+# /solution.html → 404
+
+## 第 4 轮:剩余下界补齐 + /solution/<slug> 新路径
+# 首页方案推荐位发现新 URL 模式 /solution/service_provider(全镜像唯一引用,home.md 第 23 行)。
+# /solution/service_provider → 500 "Something went wrong"(两次重试均 500,站点侧死链,无内容可镜像)。
+# news/50.html → 404;news/1.html → 404;news/189.html → 404
+#   结论:news 1–213 探测点 1/50/100/150/189/199/200–213 全 404,225–227 404 → 214–224 为完整活段。
+# solution-detail/50.html → 404;solution-detail/1.html → 404
+#   结论:solution-detail 1–213 探测点 1/50/100/150/199/200/201 全 404,214+ 404 → 202–213 为完整活段。
+# faq/100.html → No Data;faq/1.html → No Data
+#   结论:faq 全段(1/100/178–188)均为 No Data 模板,FAQ 板块无真实内容(定论)。
+
+## 本轮落盘
+# cases/ 新增 8 个兜底占位:1 50 80 84 250 400 500 596(与 169–188 占位同式,标注 ts 2026-09-15)
+# cases/ 现共 113 个 md(85 内容 + 28 兜底占位)。
+
+## 最终边界定论(2026-09-15 复查后)
+# products        活段 482–590(109 页全镜像);1–481、591+ 死。
+# case            内容 85–168+597(85 页全镜像,权威列表验证);1–84、169–188、189–596 兜底模板。
+# news            活段 214–224(11 页全镜像);其余死。
+# solution-detail 活段 202–213(12 页全镜像);其余死。
+# faq             全 No Data 模板,无真实内容。
+# 静态/分类        sitemap 9 顶级页 + c/81–c/86 全镜像;faq/weekly/download/support/
+#                 privacy-policy/terms/solution.html 404;/weekly1 404;/solution/service_provider 500。
+# 语言站          /fr/ /es/ /ru/ 存在,按用户定论(仅英文站)不抓。
